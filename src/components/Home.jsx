@@ -1,22 +1,41 @@
+import SplitText from "../animations/SplitText";
+
 const Home = () => {
+    const handleAnimationComplete = () => {
+        console.log('All letters have animated!');
+    };
     return (
-        <div>
-            <div className="hero min-h-screen" style={{ backgroundImage: `url('https://images.pexels.com/photos/370717/pexels-photo-370717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2')` }}>
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content text-center text-neutral-content">
-                    <div className="max-w-md">
+
+        <div className="hero bg-base-200 min-h-screen">
+            <div className="hero-content text-center">
+                <div className="max-w-md">
+                    <div className="m-auto">
                         <img
-                            src="path/to/your/profile-image.jpg"
-                            alt="Profile"
-                            className="rounded-full w-48 h-48 mx-auto"
+                            src="https://assets-us-01.kc-usercontent.com/5cb25086-82d2-4c89-94f0-8450813a0fd3/0c3fcefb-bc28-4af6-985e-0c3b499ae832/Elon_Musk_Royal_Society.jpg?fm=jpg&auto=format"
+                            alt="Animated Image"
+                            className="rounded-full border-4 border-white shadow-lg w-56 h-56 object-cover"
                         />
-                        <h1 className="mb-5 text-5xl font-bold">Pramod Lohra</h1>
-                        <p className="mb-5">Welcome to my portfolio! I'm a passionate developer with a love for creating amazing web experiences.</p>
-                        <button className="btn btn-primary">Get Started</button>
                     </div>
+                    <SplitText
+                        text="Hello, there!"
+                        className="text-5xl font-semibold text-center"
+                        delay={150}
+                        animationFrom={{ opacity: 0, transform: 'translate3d(0,50px,0)' }}
+                        animationTo={{ opacity: 1, transform: 'translate3d(0,0,0)' }}
+                        easing="easeOutCubic"
+                        threshold={0.2}
+                        rootMargin="-50px"
+                        onLetterAnimationComplete={handleAnimationComplete}
+                    />
+                    <p className="py-6 text-4xl">
+                        Hi,I am Pramod Lohra, Software developer from India
+                    </p>
+                    <button className="btn btn-primary">Connect with me</button>
+
                 </div>
             </div>
-        </div >
-    )
-}
+        </div>
+    );
+};
+
 export default Home;
