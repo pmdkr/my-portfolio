@@ -12,7 +12,7 @@ const Header = () => {
     };
 
     return (
-        <div className="navbar bg-base-100 shadow-sm fixed">
+        <div className="navbar bg-base-100 shadow-sm fixed flex">
             <div className="flex-none">
                 <button className="btn btn-square btn-ghost">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block h-5 w-5 stroke-current">
@@ -20,11 +20,11 @@ const Header = () => {
                     </svg>
                 </button>
             </div>
-            <div className="flex-1">
+            <div className="flex-none">
                 <Link to={"/"} className="btn btn-ghost text-xl">Pramod</Link>
             </div>
 
-            <div className="flex">
+            <div className="flex-1 flex justify-center">
                 <ul className="flex">
                     <Link to={"/about"}><li className="p-2 mx-2 cursor-pointer">About</li></Link>
                     <Link to={"/contact"}><li className="p-2 mx-2 cursor-pointer">Contact</li></Link>
