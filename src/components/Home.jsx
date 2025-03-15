@@ -25,8 +25,8 @@ const Home = () => {
     return (
         <div
             className={`hero min-h-screen ${theme === "light"
-                    ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
-                    : "bg-gradient-to-r from-gray-800 via-gray-900 to-black"
+                ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+                : "bg-gradient-to-r from-gray-800 via-gray-900 to-black"
                 }`}
         >
             <div className="hero-content flex flex-col items-center text-center">
@@ -58,8 +58,8 @@ const Home = () => {
                     <Link to={"/contact"}>
                         <button
                             className={`btn ${theme === "light"
-                                    ? "btn-primary hover:shadow-lg hover:shadow-purple-500/50"
-                                    : "bg-gray-700 hover:bg-gray-600 hover:shadow-lg hover:shadow-gray-500/50"
+                                ? "btn-primary hover:shadow-lg hover:shadow-purple-500/50"
+                                : "bg-gray-700 hover:bg-gray-600 hover:shadow-lg hover:shadow-gray-500/50"
                                 } transition-all duration-300`}
                         >
                             Connect with me
