@@ -60,7 +60,7 @@ const Header = () => {
                 {/* Center Section - Logo/Name */}
                 <div className="flex-auto flex justify-start items-center gap-2">
                     <img
-                        src="https://via.placeholder.com/40"
+                        src="../assets/myphoto.jpg"
                         alt="Logo"
                         className="rounded-full h-10 w-10"
                     />
