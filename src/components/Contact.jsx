@@ -8,7 +8,7 @@ const Contact = () => {
     return (
         <div
             className={`min-h-screen ${theme === "light"
-                ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
+                ? "bg-white" // White background for light theme
                 : "bg-gradient-to-r from-gray-800 via-gray-900 to-black"
                 } pt-24`} // Add pt-16 to account for the header height
         >

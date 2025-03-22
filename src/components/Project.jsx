@@ -4,9 +4,24 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"; // Icons for GitHu
 // eslint-disable-next-line no-unused-vars
 import { motion, useAnimation } from "framer-motion"; // For animations
 import { useInView } from "react-intersection-observer"; // To trigger animations when in view
+import classNames from "classnames"; // For cleaner class concatenation
 
 const Projects = () => {
     const theme = useSelector((state) => state.theme); // Access theme from Redux store
+
+    // Theme-specific classes
+    const themeClasses = {
+        background: theme === "light" ? "bg-white" : "bg-gradient-to-r from-gray-800 via-gray-900 to-black",
+        text: theme === "light" ? "text-gray-800" : "text-gray-100",
+        cardBackground: theme === "light" ? "bg-white" : "bg-gray-800",
+        button: theme === "light"
+            ? "bg-gradient-to-r from-purple-400 to-purple-500 text-white hover:from-purple-500 hover:to-purple-600"
+            : "bg-gray-700 text-gray-100 hover:bg-gray-600",
+        liveButton: theme === "light"
+            ? "bg-gradient-to-r from-pink-400 to-pink-500 text-white hover:from-pink-500 hover:to-pink-600"
+            : "bg-gray-700 text-gray-100 hover:bg-gray-600",
+        techTag: theme === "light" ? "bg-purple-100 text-purple-800" : "bg-gray-700 text-gray-100",
+    };
 
     // Project data
     const projects = [
@@ -62,25 +77,15 @@ const Projects = () => {
     };
 
     return (
-        <div
-            className={`min-h-screen ${theme === "light"
-                ? "bg-gradient-to-r from-purple-400 via-pink-500 to-red-500"
-                : "bg-gradient-to-r from-gray-800 via-gray-900 to-black"
-                } py-20`}
-        >
+        <div className={classNames("min-h-screen py-20", themeClasses.background)}>
             <div className="container mx-auto px-4">
-                <h1
-                    className={`text-4xl font-bold text-center ${theme === "light" ? "text-white" : "text-gray-100"
-                        } mb-10`}
-                >
+                {/* Projects Heading */}
+                <h1 className={classNames("text-4xl font-bold text-center mb-10", themeClasses.text)}>
                     My Projects
                 </h1>
 
                 {/* Projects Grid */}
-                <div
-                    ref={ref}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+                <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
                         <motion.div
                             key={index}
@@ -88,55 +93,63 @@ const Projects = () => {
                             initial="hidden"
                             animate={controls}
                             transition={{ delay: index * 0.2 }}
-                            className={`p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 ${theme === "light" ? "bg-white" : "bg-gray-800"
-                                }`}
+                            className={classNames(
+                                "p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300",
+                                themeClasses.cardBackground
+                            )}
                         >
-                            <h2
-                                className={`text-2xl font-semibold ${theme === "light" ? "text-gray-800" : "text-gray-100"
-                                    } mb-4`}
-                            >
+                            {/* Project Title */}
+                            <h2 className={classNames("text-2xl font-semibold mb-4", themeClasses.text)}>
                                 {project.title}
                             </h2>
-                            <p
-                                className={`text-lg ${theme === "light" ? "text-gray-600" : "text-gray-300"
-                                    } mb-4`}
-                            >
+
+                            {/* Project Description */}
+                            <p className={classNames("text-lg mb-4", themeClasses.text)}>
                                 {project.description}
                             </p>
+
+                            {/* Technologies */}
                             <div className="flex flex-wrap gap-2 mb-6">
                                 {project.technologies.map((tech, idx) => (
                                     <span
                                         key={idx}
-                                        className={`px-3 py-1 rounded-full text-sm ${theme === "light"
-                                            ? "bg-purple-100 text-purple-800"
-                                            : "bg-gray-700 text-gray-100"
-                                            }`}
+                                        className={classNames(
+                                            "px-3 py-1 rounded-full text-sm",
+                                            themeClasses.techTag
+                                        )}
                                     >
                                         {tech}
                                     </span>
                                 ))}
                             </div>
+
+                            {/* Buttons */}
                             <div className="flex gap-4">
+                                {/* GitHub Button */}
                                 <a
                                     href={project.github}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`flex items-center px-4 py-2 rounded-lg ${theme === "light"
-                                        ? "bg-purple-600 text-white hover:bg-purple-700"
-                                        : "bg-gray-700 text-gray-100 hover:bg-gray-600"
-                                        } transition-all duration-300`}
+                                    aria-label="GitHub Repository"
+                                    className={classNames(
+                                        "flex items-center px-4 py-2 rounded-lg text-white transition-all duration-300",
+                                        themeClasses.button
+                                    )}
                                 >
                                     <FaGithub className="mr-2" />
                                     GitHub
                                 </a>
+
+                                {/* Live Demo Button */}
                                 <a
                                     href={project.live}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className={`flex items-center px-4 py-2 rounded-lg ${theme === "light"
-                                        ? "bg-pink-600 text-white hover:bg-pink-700"
-                                        : "bg-gray-700 text-gray-100 hover:bg-gray-600"
-                                        } transition-all duration-300`}
+                                    aria-label="Live Demo"
+                                    className={classNames(
+                                        "flex items-center px-4 py-2 rounded-lg text-white transition-all duration-300",
+                                        themeClasses.liveButton
+                                    )}
                                 >
                                     <FaExternalLinkAlt className="mr-2" />
                                     Live Demo
