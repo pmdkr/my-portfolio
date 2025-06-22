@@ -60,14 +60,8 @@ const About = () => {
             title: " Associate Software Engineer",
             company: "Nathcorp Inc.",
             description: "Developed full-stack applications using React and Node.js, implemented automated testing frameworks."
-        },
-        {
-            year: "2018 - 2020",
-            title: "Junior Developer",
-            company: "StartUp Hub",
-            description: "Worked on MVP development, UI/UX implementation, and cloud integration projects."
         }
-    ];
+    ]
 
     // Animation variants
     const timelineVariants = {
