@@ -8,12 +8,23 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import classNames from "classnames";
 
+const funFacts = [
+    "I love building UIs with React!",
+    "I can solve a Rubik's cube in under a minute.",
+    "I enjoy hiking and exploring nature.",
+    "I'm a big fan of open-source projects.",
+    "I once built a chatbot for fun!"
+];
+
 const About = () => {
     const theme = useSelector((state) => state.theme);
     const statsRef = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
     const [workExpRef, workExpInView] = useInView({ triggerOnce: true, threshold: 0.2 });
     const workExpControls = useAnimation();
+    const [skillsRef, skillsInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+    const [funFact, setFunFact] = useState(funFacts[0]);
+    const [showFact, setShowFact] = useState(false);
 
     // Theme-specific classes
     const themeClasses = {
@@ -64,11 +75,6 @@ const About = () => {
     ]
 
     // Animation variants
-    const timelineVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-    };
-
     const lineVariants = {
         hidden: { height: 0 },
         visible: { height: "100%", transition: { duration: 1.5 } }
@@ -100,64 +106,118 @@ const About = () => {
         };
     }, []);
 
+    // Fun Fact handler
+    const handleFunFact = () => {
+        let idx;
+        do {
+            idx = Math.floor(Math.random() * funFacts.length);
+        } while (funFacts[idx] === funFact);
+        setShowFact(false);
+        setTimeout(() => {
+            setFunFact(funFacts[idx]);
+            setShowFact(true);
+        }, 200);
+    };
+
     return (
-        <div className={classNames("min-h-screen py-20", themeClasses.background)}>
+        <div id="about" className={classNames("min-h-screen py-20", themeClasses.background)}>
             <div className="container mx-auto px-4">
-                <h1 className={classNames("text-4xl font-bold text-center mb-10", themeClasses.text)}>
+                <motion.h1
+                    className={classNames("text-4xl font-bold text-center mb-10", themeClasses.text)}
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
+                >
                     About Me
-                </h1>
+                </motion.h1>
 
                 {/* Introduction Section */}
                 <div className="flex flex-col md:flex-row items-center gap-10">
                     {/* Photo */}
-                    <div className="flex-1">
-                        <img
+                    <motion.div
+                        className="flex-1"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.7 }}
+                        viewport={{ once: true }}
+                    >
+                        <motion.img
                             src="https://fcp.vse.cz/4IZ268/2018-2019-ZS/www/kubl05/Class/pictures/elon.jpg"
                             alt="Profile"
-                            className="rounded-lg shadow-2xl w-full max-w-md mx-auto"
+                            className="rounded-lg shadow-2xl w-full max-w-md mx-auto floating-about-img"
+                            whileHover={{ scale: 1.07, rotate: 2 }}
+                            animate={{ y: [0, -12, 0] }}
+                            transition={{ duration: 3, repeat: Infinity, repeatType: "loop" }}
                         />
-                    </div>
+                    </motion.div>
 
                     {/* Brief Introduction */}
-                    <div className="flex-1">
-                        <p className={classNames("text-lg mb-4", themeClasses.text)}>
+                    <motion.div
+                        className="flex-1"
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                        viewport={{ once: true }}
+                    >
+                        <motion.p
+                            className={classNames("text-lg mb-4", themeClasses.text)}
+                            initial={{ opacity: 0, x: -20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.7, delay: 0.3 }}
+                            viewport={{ once: true }}
+                        >
                             Hi, I'm <span className="font-bold">Pramod Lohra</span>, a passionate software developer with a love for building amazing web applications. I specialize in React, Node.js, and database management, and I enjoy working on projects that challenge me to learn and grow.
-                        </p>
-                        <p className={classNames("text-lg mb-4", themeClasses.text)}>
+                        </motion.p>
+                        <motion.p
+                            className={classNames("text-lg mb-4", themeClasses.text)}
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.7, delay: 0.4 }}
+                            viewport={{ once: true }}
+                        >
                             With over <span className="font-bold">3 years of experience</span>, I have completed <span className="font-bold">15+ projects</span> and worked with <span className="font-bold">10+ happy clients</span>. My goal is to create efficient, scalable, and user-friendly solutions.
-                        </p>
-
-                        {/* Resume Download Button */}
-                        <div className="mt-6">
-                            <a
-                                href="https://drive.google.com/file/d/193T2Vqgj1-S4lHKcPDxDjbUDS-0T2ozS/view?usp=drive_link"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Download Resume"
-                                className={classNames(
-                                    "relative inline-flex items-center px-8 py-3 text-lg font-semibold text-white rounded-lg transition-all duration-300 overflow-hidden group",
-                                    themeClasses.button
-                                )}
-                            >
-                                <FaDownload className="mr-2" />
-                                <span className="relative z-10">View Resume</span>
-                                <span className="absolute inset-0 border-2 border-purple-500 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                                <span className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300"></span>
-                            </a>
-                        </div>
-                    </div>
+                        </motion.p>
+                        {/* Fun Fact Button */}
+                        <motion.button
+                            className={classNames("mt-4 px-6 py-2 rounded-lg text-white font-semibold shadow-md focus:outline-none transition-all", themeClasses.button)}
+                            whileHover={{ scale: 1.08 }}
+                            whileTap={{ scale: 0.97 }}
+                            onClick={handleFunFact}
+                        >
+                            Show Fun Fact
+                        </motion.button>
+                        <motion.div
+                            className="mt-4 min-h-[32px]"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={showFact ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                            transition={{ duration: 0.4 }}
+                        >
+                            <span className={classNames("text-base font-medium", themeClasses.text)}>{funFact}</span>
+                        </motion.div>
+                    </motion.div>
                 </div>
 
                 {/* Skills Section */}
-                <div className="mt-20">
-                    <h2 className={classNames("text-3xl font-bold text-center mb-10", themeClasses.text)}>
+                <div className="mt-20" ref={skillsRef}>
+                    <motion.h2
+                        className={classNames("text-3xl font-bold text-center mb-10", themeClasses.text)}
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                    >
                         My Skills
-                    </h2>
+                    </motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {skills.map((skill, index) => (
-                            <div
+                            <motion.div
                                 key={index}
                                 className={classNames("p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300", themeClasses.cardBackground)}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.5, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                                whileHover={{ scale: 1.05, boxShadow: "0 8px 32px 0 rgba(168,85,247,0.25)" }}
                             >
                                 <div className="flex items-center justify-center mb-4">
                                     <div className="relative">
@@ -175,21 +235,30 @@ const About = () => {
                                     {skill.name}
                                 </h3>
                                 <div className="w-full bg-gray-200 rounded-full h-2.5 mt-4">
-                                    <div
+                                    <motion.div
                                         className="bg-purple-500 h-2.5 rounded-full transition-all duration-1000"
-                                        style={{ width: `${skill.level}%` }}
-                                    ></div>
+                                        style={{ width: skillsInView ? `${skill.level}%` : 0 }}
+                                        initial={{ width: 0 }}
+                                        animate={{ width: skillsInView ? `${skill.level}%` : 0 }}
+                                        transition={{ duration: 1, delay: 0.2 + index * 0.1 }}
+                                    ></motion.div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>
 
                 {/* Work Experience Section */}
                 <div className="mt-20" ref={workExpRef}>
-                    <h2 className={classNames("text-3xl font-bold text-center mb-10", themeClasses.text)}>
+                    <motion.h2
+                        className={classNames("text-3xl font-bold text-center mb-10", themeClasses.text)}
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                    >
                         Work Experience
-                    </h2>
+                    </motion.h2>
                     <div className="relative max-w-3xl mx-auto">
                         <motion.div
                             initial="hidden"
@@ -204,10 +273,10 @@ const About = () => {
                         {workExperience.map((exp, index) => (
                             <motion.div
                                 key={index}
-                                initial="hidden"
-                                animate={workExpControls}
-                                variants={timelineVariants}
-                                transition={{ delay: index * 0.3 }}
+                                initial={{ opacity: 0, x: index % 2 === 0 ? 60 : -60 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                                transition={{ duration: 0.7, delay: index * 0.2 }}
+                                viewport={{ once: true }}
                                 className="relative mb-12"
                             >
                                 <div className={`flex items-center justify-between ${index % 2 === 0 ? 'flex-row-reverse' : ''}`}>
@@ -250,14 +319,25 @@ const About = () => {
 
                 {/* Stats Section */}
                 <div className="mt-20" ref={statsRef}>
-                    <h2 className={classNames("text-3xl font-bold text-center mb-10", themeClasses.text)}>
+                    <motion.h2
+                        className={classNames("text-3xl font-bold text-center mb-10", themeClasses.text)}
+                        initial={{ opacity: 0, y: -20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                    >
                         My Achievements
-                    </h2>
+                    </motion.h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {stats.map((stat, index) => (
-                            <div
+                            <motion.div
                                 key={index}
                                 className={classNames("p-6 rounded-lg shadow-lg text-center", themeClasses.cardBackground)}
+                                initial={{ opacity: 0, scale: 0.7 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                                viewport={{ once: true }}
+                                whileHover={{ scale: 1.08 }}
                             >
                                 <h3 className={classNames("text-4xl font-bold", themeClasses.statsNumber)}>
                                     {isVisible ? (
@@ -273,7 +353,7 @@ const About = () => {
                                 <p className={classNames("text-lg", themeClasses.text)}>
                                     {stat.label}
                                 </p>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

@@ -8,29 +8,26 @@ import Project from "./components/Project";
 const router = createBrowserRouter([
     {
         path: "/",
-        Component: App,
+        element: <App />,
         children: [
             {
-                path: '',
-                Component: Home
+                index: true,
+                element: <Home />
             },
             {
-                path: '/about',
-                Component: About
+                path: "about",
+                element: <About />
             },
             {
-                path: '/project',
-                Component: Project
+                path: "project",
+                element: <Project />
             },
             {
-                path: '/contact',
-                Component: Contact
+                path: "contact",
+                element: <Contact />
             }
-
         ]
     }
 ])
-
-
 
 export default router;

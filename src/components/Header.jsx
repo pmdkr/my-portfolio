@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../utils/themeSlice";
 import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import logo from "../assets/pramod-logo.svg";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +49,10 @@ const Header = () => {
 
                 {/* Center - Logo */}
                 <div className="flex-auto flex justify-start items-center gap-2">
-                    <Link to={"/"} className="btn btn-ghost text-xl">Pramod</Link>
+                    <Link to={"/"} className="btn btn-ghost text-xl flex items-center gap-2">
+                        <img src={logo} alt="Logo" className="w-8 h-8" />
+                        Pramod
+                    </Link>
                 </div>
 
                 {/* Middle - Links */}
