@@ -34,26 +34,26 @@ const Projects = () => {
             live: "https://yourportfolio.com",
         },
         {
-            title: "E-Commerce App",
+            title: "Dev tinder",
             description:
-                "A full-stack e-commerce application with user authentication, product management, and payment integration.",
+                "A clone of Tinder web app, implemented sending and reciving connection request and store the user profile in MongoDB",
             technologies: ["React", "Node.js", "Express", "MongoDB"],
             github: "https://github.com/yourusername/ecommerce-app",
             live: "https://ecommerce-app.com",
         },
         {
-            title: "Task Manager",
+            title: "Video streaming application",
             description:
-                "A task management application to help users organize their tasks with features like due dates and priority levels.",
-            technologies: ["React", "Firebase", "Material-UI"],
+                "video streaming platform using MERN stack with support for video uploads, storage via MongoDB GridFS, and secure playback",
+            technologies: ["React", "MongoDB", "Express JS", "Multer", "GridFS", "JWT"],
             github: "https://github.com/yourusername/task-manager",
             live: "https://task-manager.com",
         },
         {
-            title: "Weather App",
+            title: "Netflix GPT",
             description:
-                "A weather application that provides real-time weather updates and forecasts for any location.",
-            technologies: ["React", "OpenWeatherMap API", "Axios"],
+                "A clone of Netflix app, uses TMDB api to fetch movies details and implemented Authentication and Browse page",
+            technologies: ["React", "TMDB api", "Axios"],
             github: "https://github.com/yourusername/weather-app",
             live: "https://weather-app.com",
         },

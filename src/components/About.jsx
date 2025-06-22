@@ -50,15 +50,15 @@ const About = () => {
     // Work experience data
     const workExperience = [
         {
-            year: "2022 - Present",
-            title: "Senior Software Engineer",
-            company: "Tech Corp Inc.",
+            year: "May 2024 - Present",
+            title: "Software Engineer",
+            company: "Nathcorp Inc.",
             description: "Leading front-end development team, implementing microservices architecture, and improving CI/CD pipelines."
         },
         {
-            year: "2020 - 2022",
-            title: "Software Engineer",
-            company: "Digital Solutions Ltd.",
+            year: "June 2022 - April 2024",
+            title: " Associate Software Engineer",
+            company: "Nathcorp Inc.",
             description: "Developed full-stack applications using React and Node.js, implemented automated testing frameworks."
         },
         {
@@ -101,6 +101,7 @@ const About = () => {
 
         if (statsRef.current) observer.observe(statsRef.current);
         return () => {
+            // eslint-disable-next-line react-hooks/exhaustive-deps
             if (statsRef.current) observer.unobserve(statsRef.current);
         };
     }, []);
