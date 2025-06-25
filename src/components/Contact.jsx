@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
 
 const Contact = () => {
     const theme = useSelector((state) => state.theme); // Access theme from Redux store
@@ -8,24 +10,29 @@ const Contact = () => {
     return (
         <div
             className={`min-h-screen ${theme === "light"
-                ? "bg-white" // White background for light theme
+                ? "bg-white"
                 : "bg-gradient-to-r from-gray-800 via-gray-900 to-black"
-                } pt-24`} // Add pt-16 to account for the header height
+                } pt-24`}
         >
             <div className="container mx-auto px-4">
-                <h1
-                    className={`text-4xl font-bold text-center ${theme === "light" ? "text-white" : "text-gray-100"
-                        } mb-10`}
+                <motion.h1
+                    className={`text-4xl font-bold text-center ${theme === "light" ? "text-white" : "text-gray-100"} mb-10`}
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
                 >
                     Let's Connect!
-                </h1>
+                </motion.h1>
 
                 {/* Contact Form and Details Section */}
                 <div className="flex flex-col lg:flex-row gap-8">
                     {/* Contact Form */}
-                    <div
-                        className={`flex-1 max-w-2xl mx-auto rounded-lg shadow-2xl p-8 ${theme === "light" ? "bg-white" : "bg-gray-800"
-                            }`}
+                    <motion.div
+                        className={`flex-1 max-w-2xl mx-auto rounded-lg shadow-2xl p-8 ${theme === "light" ? "bg-white" : "bg-gray-800"}`}
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
                     >
                         <form className="space-y-6">
                             <div className="form-control">
@@ -96,19 +103,25 @@ const Contact = () => {
                                 </button>
                             </div>
                         </form>
-                    </div>
+                    </motion.div>
 
                     {/* Contact Details */}
-                    <div
-                        className={`flex-1 max-w-2xl mx-auto rounded-lg shadow-2xl p-8 ${theme === "light" ? "bg-white" : "bg-gray-800"
-                            }`}
+                    <motion.div
+                        className={`flex-1 max-w-2xl mx-auto rounded-lg shadow-2xl p-8 ${theme === "light" ? "bg-white" : "bg-gray-800"}`}
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
                     >
-                        <h2
-                            className={`text-2xl font-bold ${theme === "light" ? "text-gray-800" : "text-gray-100"
-                                } mb-6`}
+                        <motion.h2
+                            className={`text-2xl font-bold ${theme === "light" ? "text-gray-800" : "text-gray-100"} mb-6`}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.7, delay: 0.2 }}
                         >
                             Contact Details
-                        </h2>
+                        </motion.h2>
                         <div className="space-y-6">
                             {/* Email */}
                             <div className="flex items-center gap-4">
@@ -152,7 +165,7 @@ const Contact = () => {
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
 
                 {/* Social Media Links */}

@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaArrowUp } from "react-icons/fa";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 
@@ -29,9 +30,7 @@ const Footer = () => {
     const theme = useSelector((state) => state.theme);
     // Theme-specific classes
     const themeClasses = {
-        background: theme === "light"
-            ? "bg-gradient-to-r from-purple-200 via-pink-100 to-purple-300 text-gray-800"
-            : "bg-gradient-to-r from-purple-700 via-pink-500 to-purple-900 text-white",
+        background: "backdrop-blur-md bg-white/30 dark:bg-gray-900/30 border-t border-white/20 dark:border-gray-700/40 shadow-t",
         button: theme === "light"
             ? "bg-white bg-opacity-40 text-purple-700 hover:bg-opacity-70"
             : "bg-white bg-opacity-20 text-white hover:bg-opacity-40",
@@ -90,7 +89,11 @@ const Footer = () => {
             <motion.button
                 onClick={handleScrollTop}
                 className={`flex items-center gap-2 px-4 py-2 rounded-full font-semibold shadow-md transition-all duration-300 focus:outline-none ${themeClasses.button}`}
-                whileHover={{ scale: 1.12, backgroundColor: "#f472b6" }}
+                whileHover={{ 
+                    scale: 1.12, 
+                    backgroundColor: theme === "light" ? "#fbcfe8" : "#be185d", // light: pink-100, dark: pink-800
+                    color: theme === "light" ? "#a21caf" : "#fff" // light: purple-700, dark: white
+                }}
                 whileTap={{ scale: 0.95 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

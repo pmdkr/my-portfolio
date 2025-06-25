@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import classNames from "classnames"; // Optional: For cleaner class concatenation
 import ParticlesBackground from "../animations/Particles";
 import SplitText from "../animations/SplitText";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaDownload } from "react-icons/fa";
 
 const Home = () => {
     const [greetingIndex, setGreetingIndex] = useState(0);
@@ -54,7 +54,7 @@ const Home = () => {
     };
 
     return (
-        <div className={classNames("hero min-h-screen relative overflow-hidden", themeClasses.background)}>
+        <div className="hero min-h-screen relative overflow-hidden">
             <ParticlesBackground />
             <div className="hero-content flex flex-col items-center text-center relative z-10">
                 <div className="max-w-md">
@@ -101,6 +101,20 @@ const Home = () => {
                             Connect with me
                         </button>
                     </Link>
+                    {/* Download Resume Button - styled like Connect with me */}
+                    <a
+                        href="https://drive.google.com/file/d/1rboJyJ9tm-i7oHTfpkC_czxlDGFZiZW6/view?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={classNames(
+                            "btn text-white hover:shadow-lg transition-all duration-300 pulse-btn mx-4 mt-8 flex items-center justify-center gap-2",
+                            themeClasses.button
+                        )}
+                        style={{ display: "inline-flex" }}
+                    >
+                        <FaDownload className="text-lg" />
+                        Download Resume
+                    </a>
                 </div>
             </div>
             {/* Scroll Down Indicator */}
