@@ -3,9 +3,42 @@ import { useSelector } from "react-redux";
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
+import emailjs from 'emailjs-com';
+import { useState } from 'react';
 
 const Contact = () => {
     const theme = useSelector((state) => state.theme); // Access theme from Redux store
+    const [form, setForm] = useState({ name: '', email: '', message: '' });
+    const [status, setStatus] = useState('');
+
+    const handleChange = (e) => {
+        setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setStatus('Sending...');
+        console.log('Sending email...', form);
+        emailjs.send(
+            'service_0nqxexr',      // e.g. 'service_xxx'
+            'template_mnmdr9h',     // e.g. 'template_xxx'
+            {
+                from_name: form.name,
+                from_email: form.email,
+                message: form.message,
+            },
+            'LUp4QWaix4pAgM9sH'       // e.g. 'user_xxx'
+        )
+            .then((response) => {
+                console.log('SUCCESS!', response.status, response.text);
+                setStatus('Message sent successfully!');
+                setForm({ name: '', email: '', message: '' });
+            })
+            .catch((err) => {
+                console.error('FAILED...', err);
+                setStatus('Failed to send message. Please try again.');
+            });
+    };
 
     return (
         <div
@@ -34,7 +67,7 @@ const Contact = () => {
                         viewport={{ once: true }}
                         transition={{ duration: 0.7 }}
                     >
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="form-control">
                                 <label className="label">
                                     <span
@@ -46,12 +79,16 @@ const Contact = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name="name"
+                                    value={form.name}
+                                    onChange={handleChange}
                                     placeholder="Enter your name"
                                     className={`input input-bordered w-full focus:ring-2 ${theme === "light"
                                         ? "focus:ring-purple-500"
                                         : "focus:ring-gray-500"
                                         } focus:outline-none ${theme === "light" ? "bg-white" : "bg-gray-700"
                                         }`}
+                                    required
                                 />
                             </div>
                             <div className="form-control">
@@ -65,12 +102,16 @@ const Contact = () => {
                                 </label>
                                 <input
                                     type="email"
+                                    name="email"
+                                    value={form.email}
+                                    onChange={handleChange}
                                     placeholder="Enter your email"
                                     className={`input input-bordered w-full focus:ring-2 ${theme === "light"
                                         ? "focus:ring-purple-500"
                                         : "focus:ring-gray-500"
                                         } focus:outline-none ${theme === "light" ? "bg-white" : "bg-gray-700"
                                         }`}
+                                    required
                                 />
                             </div>
                             <div className="form-control">
@@ -83,12 +124,16 @@ const Contact = () => {
                                     </span>
                                 </label>
                                 <textarea
+                                    name="message"
+                                    value={form.message}
+                                    onChange={handleChange}
                                     className={`textarea textarea-bordered w-full h-32 focus:ring-2 ${theme === "light"
                                         ? "focus:ring-purple-500"
                                         : "focus:ring-gray-500"
                                         } focus:outline-none ${theme === "light" ? "bg-white" : "bg-gray-700"
                                         }`}
                                     placeholder="Write your message here..."
+                                    required
                                 ></textarea>
                             </div>
                             <div className="form-control">
@@ -102,6 +147,7 @@ const Contact = () => {
                                     Send Message
                                 </button>
                             </div>
+                            {status && <p className="text-center mt-4">{status}</p>}
                         </form>
                     </motion.div>
 
