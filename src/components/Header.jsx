@@ -48,10 +48,27 @@ const Header = () => {
                 </div>
 
                 {/* Center - Logo */}
-                <div className="flex-auto flex justify-start items-center gap-2">
-                    <Link to={"/"} className="btn btn-ghost text-xl flex items-center gap-2">
+                <div className="flex-auto flex justify-start items-center gap-2 min-w-0">
+                    <Link to={"/"} className="btn btn-ghost text-xl flex items-center gap-2 min-w-0">
                         <img src={logo} alt="Logo" className="w-8 h-8" />
-                        Pramod
+                        <span
+                            className="text-2xl font-bold"
+                            style={{ color: theme === "light" ? "#a855f7" : "#fff" }}
+                        >
+                            Pramod
+                        </span>
+                        <span
+                            className="mx-2 text-2xl font-bold hidden md:inline"
+                            style={{ color: theme === "light" ? "#a855f7" : "#fff" }}
+                        >
+                            |
+                        </span>
+                        <span
+                            className="text-lg font-semibold truncate hidden md:inline"
+                            style={{ color: theme === "light" ? "#a855f7" : "#fff" }}
+                        >
+                            Software Engineer
+                        </span>
                     </Link>
                 </div>
 
