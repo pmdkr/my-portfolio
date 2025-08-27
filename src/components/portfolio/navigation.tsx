@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Sun, Moon } from 'lucide-react';
@@ -16,17 +17,22 @@ export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const navRef = useRef<HTMLElement | null>(null);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Close mobile menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (isOpen && !(event.target as Element).closest('nav')) {
+      const target = event.target as Node | null;
+      if (!isOpen) return;
+      if (navRef.current && target && !navRef.current.contains(target)) {
         setIsOpen(false);
       }
     };
 
     if (isOpen) {
-      document.addEventListener('click', handleClickOutside);
+      document.addEventListener('click', handleClickOutside, true);
       // Prevent body scroll when mobile menu is open
       document.body.style.overflow = 'hidden';
     } else {
@@ -34,7 +40,7 @@ export const Navigation = () => {
     }
 
     return () => {
-      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('click', handleClickOutside, true);
       document.body.style.overflow = 'unset';
     };
   }, [isOpen]);
@@ -50,8 +56,8 @@ export const Navigation = () => {
 
   useEffect(() => {
     // Check if user has dark mode preference
-    const darkMode = localStorage.getItem('darkMode') === 'true' || 
-                    (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    const darkMode = localStorage.getItem('darkMode') === 'true' ||
+      (!localStorage.getItem('darkMode') && window.matchMedia('(prefers-color-scheme: dark)').matches);
     setIsDark(darkMode);
     if (darkMode) {
       document.documentElement.classList.add('dark');
@@ -80,25 +86,39 @@ export const Navigation = () => {
   };
 
   const scrollToSection = (href: string) => {
+    // Map hash hrefs to clean pathnames
+    const path = href === '#' ? '/' : `/${href.replace('#', '')}`;
+
+    // Navigate to the path
+    if (location.pathname !== path) {
+      navigate(path);
+      setIsOpen(false);
+      return;
+    }
+
+    // Already on the path: perform smooth scroll
     if (href === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const element = document.querySelector(href);
-      element?.scrollIntoView({ behavior: 'smooth' });
+      const selector = href.startsWith('#') ? href : `#${href}`;
+      const element = document.querySelector(selector);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsOpen(false);
   };
 
   return (
     <motion.nav
+      ref={navRef}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled || isOpen
-          ? 'bg-background/95 backdrop-blur-lg border-b border-border/50 shadow-elegant'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || isOpen
+        ? 'bg-background/95 backdrop-blur-lg border-b border-border/50 shadow-elegant'
+        : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
@@ -114,7 +134,7 @@ export const Navigation = () => {
             onKeyDown={(e) => e.key === 'Enter' && scrollToSection('#')}
             aria-label="Go to top of page"
           >
-            Pramod
+            PL
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -136,7 +156,7 @@ export const Navigation = () => {
                 />
               </motion.button>
             ))}
-            
+
             {/* Dark mode toggle */}
             <motion.button
               onClick={toggleDarkMode}
@@ -205,14 +225,7 @@ export const Navigation = () => {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/50 shadow-lg"
-              style={{ 
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                right: 0,
-                zIndex: 1000
-              }}
+              className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/50 shadow-lg fixed top-16 left-0 right-0 z-[60]"
             >
               <div className="py-2 space-y-1">
                 {navItems.map((item, index) => (

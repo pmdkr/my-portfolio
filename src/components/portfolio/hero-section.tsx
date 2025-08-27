@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,11 +28,35 @@ const itemVariants = {
 };
 
 export const HeroSection = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setShowBackToTop(window.scrollY > 200);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // Initialize state on mount
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   const scrollToContact = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const handleBackToTop = () => {
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => window.scrollTo({ top: 0, behavior: 'smooth' }), 50);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
+    <>
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated background gradient */}
       <div className="absolute inset-0 gradient-hero opacity-90" />
@@ -152,5 +177,17 @@ export const HeroSection = () => {
         <div className="w-1 h-16 bg-gradient-to-b from-primary to-transparent rounded-full" />
       </motion.div>
     </section>
+    {/* Back to Top button */}
+    {showBackToTop && (
+      <Button
+        onClick={handleBackToTop}
+        data-interactive
+        aria-label="Back to top"
+        className="fixed bottom-6 right-6 z-50 shadow-elegant hover:shadow-glow rounded-full h-12 w-12 p-0 flex items-center justify-center bg-primary hover:bg-primary-glow text-primary-foreground"
+      >
+        <ArrowUp size={20} />
+      </Button>
+    )}
+    </>
   );
 };

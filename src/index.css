@@ -132,11 +132,14 @@ All colors MUST be HSL.
 
   html {
     scroll-behavior: smooth;
+    touch-action: manipulation;
   }
 
   body {
     @apply bg-background text-foreground font-inter;
     overflow-x: hidden;
+    -ms-content-zooming: none;
+    touch-action: pan-x pan-y;
   }
 
   /* Custom scrollbar */
