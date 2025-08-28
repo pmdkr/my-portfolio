@@ -80,9 +80,13 @@ export const AboutSection = () => {
                 className="relative bg-card rounded-2xl p-2 shadow-card"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+                  src="/image2.JPG"
                   alt="Pramod Lohra - Software Developer"
-                  className="w-full h-80 object-cover rounded-xl"
+                  className="w-full h-80 object-cover object-top rounded-xl"
+                  onError={(e) => {
+                    // Fallback to placeholder if image fails to load
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face";
+                  }}
                 />
               </motion.div>
             </div>
@@ -99,13 +103,13 @@ export const AboutSection = () => {
 
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                I'm a passionate full-stack developer with over 3 years of experience 
-                building scalable web applications. I love turning complex problems 
+                I'm a passionate full-stack developer with over 3 years of experience
+                building scalable web applications. I love turning complex problems
                 into simple, beautiful, and intuitive solutions.
               </p>
               <p>
-                When I'm not coding, you'll find me exploring new technologies, 
-                contributing to open-source projects, or sharing knowledge with 
+                When I'm not coding, you'll find me exploring new technologies,
+                contributing to open-source projects, or sharing knowledge with
                 the developer community.
               </p>
             </div>

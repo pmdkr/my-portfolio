@@ -93,6 +93,17 @@ export const Navigation = () => {
     if (location.pathname !== path) {
       navigate(path);
       setIsOpen(false);
+      // Scroll after navigation completes
+      setTimeout(() => {
+        if (href === '#') {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+          const element = document.querySelector(href);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }
+      }, 100);
       return;
     }
 
@@ -100,8 +111,7 @@ export const Navigation = () => {
     if (href === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      const selector = href.startsWith('#') ? href : `#${href}`;
-      const element = document.querySelector(selector);
+      const element = document.querySelector(href);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
       }
