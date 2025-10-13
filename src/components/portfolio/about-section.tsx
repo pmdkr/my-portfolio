@@ -147,7 +147,7 @@ export const AboutSection = () => {
               className="pt-4"
             >
               <a
-                href="https://drive.google.com/file/d/1rWsKHWHm7HRQkZRi4981ghXY_1e4lDjA/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1q6Hmqe79rhDcsxkVUIVV2rMb5NQvKYev/view?usp=sharing"
                 download
                 data-interactive
                 className="inline-flex items-center text-primary hover:text-primary-glow font-medium text-lg transition-smooth group"
