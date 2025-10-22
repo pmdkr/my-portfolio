@@ -149,7 +149,7 @@ export const ContactSection = () => {
 
             <div className="space-y-6">
               <motion.a
-                href="mailto:john@example.com"
+                href="mailto:pramodkrlohra@gmail.com"
                 data-interactive
                 whileHover={{ x: 5 }}
                 className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border/50 hover:border-primary/20 transition-smooth group"

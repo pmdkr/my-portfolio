@@ -148,7 +148,8 @@ export const AboutSection = () => {
             >
               <a
                 href="https://drive.google.com/file/d/1q6Hmqe79rhDcsxkVUIVV2rMb5NQvKYev/view?usp=sharing"
-                download
+                target="_blank"
+                rel="noopener noreferrer"
                 data-interactive
                 className="inline-flex items-center text-primary hover:text-primary-glow font-medium text-lg transition-smooth group"
               >

@@ -12,7 +12,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
     technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/johndoe/ecommerce"
+    githubUrl: "https://github.com/pmdkr/my-DevTinder"
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
     technologies: ["Next.js", "TypeScript", "Prisma", "Socket.io", "PostgreSQL"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/johndoe/taskmanager"
+    githubUrl: "https://github.com/pmdkr/my-NetflixGPT"
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=300&fit=crop",
     technologies: ["Vue.js", "Chart.js", "OpenWeather API", "Vuex", "SCSS"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/johndoe/weather"
+    githubUrl: "https://github.com/pmdkr/VideoHub"
   },
   {
     id: 4,
@@ -73,13 +73,13 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { 
-    opacity: 0, 
+  hidden: {
+    opacity: 0,
     y: 50,
     scale: 0.9
   },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     scale: 1,
     transition: {
@@ -103,7 +103,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
   return (
     <motion.div
       variants={cardVariants}
-      whileHover={{ 
+      whileHover={{
         y: -10,
         transition: { duration: 0.3 }
       }}
@@ -142,7 +142,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             </motion.a>
           </div>
         </div>
-        
+
         <CardHeader>
           <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
             {project.title}
@@ -151,7 +151,7 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
             {project.description}
           </CardDescription>
         </CardHeader>
-        
+
         <CardContent>
           <div className="flex flex-wrap gap-2">
             {project.technologies.map((tech, index) => (
@@ -161,8 +161,8 @@ const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}
               >
-                <Badge 
-                  variant="secondary" 
+                <Badge
+                  variant="secondary"
                   className="text-xs hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
                 >
                   {tech}

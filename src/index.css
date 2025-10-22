@@ -3,78 +3,72 @@
 @tailwind utilities;
 
 /* ===========================================================
-   🎨 Design System — Luxury Coral + Deep Purple (Modern 2025 UI)
-   Warm coral meets royal violet with subtle golden-peach accents.
-   Elegant, modern, and emotional — ideal for portfolio websites.
+   🧠 NEURAL INTERFACE — Futuristic Developer Theme (2025)
+   Deep neural blue + electric cyan with data-stream accents
+   Perfect for software developer portfolios
    =========================================================== */
 
 @layer base {
   :root {
     /* ===========================================================
-       ☀️ Light Mode — Coral warmth + Violet depth
+       ☀️ Light Mode — Clean tech aesthetic
        =========================================================== */
-    --background: 0 0% 100%;
-    --foreground: 250 15% 10%;
+    --background: 210 40% 98%;
+    --foreground: 240 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 250 15% 10%;
+    --card-foreground: 240 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 250 15% 10%;
+    --popover-foreground: 240 25% 10%;
 
-    /* Coral base with luxury violet edge */
-    --primary: 12 82% 58%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 285 70% 55%;
+    /* Electric cyan as primary */
+    --primary: 185 100% 45%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 285 100% 55%;
 
-    /* Soft supporting tones */
-    --secondary: 280 40% 97%;
-    --secondary-foreground: 250 20% 25%;
+    /* Clean tech supporting tones */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 240 25% 15%;
 
-    --muted: 260 25% 98%;
-    --muted-foreground: 250 10% 45%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 240 20% 40%;
 
-    --accent: 285 70% 60%;
-    --accent-foreground: 12 82% 45%;
+    --accent: 285 100% 55%;
+    --accent-foreground: 185 100% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 260 20% 90%;
-    --input: 260 20% 90%;
-    --ring: 12 82% 58%;
+    --border: 210 40% 90%;
+    --input: 210 40% 90%;
+    --ring: 185 100% 45%;
 
     --radius: 0.75rem;
 
     /* ===========================================================
-       🌈 Gradients — Coral → Violet → Peach Gold
+       🌈 Gradients — Electric cyan → Neural purple
        =========================================================== */
-    --gradient-primary: linear-gradient(
-      135deg,
-      hsl(12 82% 62%) 0%,
-      hsl(285 70% 60%) 50%,
-      hsl(35 95% 68%) 100%
-    );
+    --gradient-primary: linear-gradient(135deg,
+        hsl(185 100% 45%) 0%,
+        hsl(210 100% 50%) 50%,
+        hsl(285 100% 55%) 100%);
 
-    --gradient-hero: linear-gradient(
-      135deg,
-      hsl(12 82% 62%) 0%,
-      hsl(285 70% 60%) 45%,
-      hsl(35 95% 68%) 100%
-    );
+    --gradient-hero: linear-gradient(135deg,
+        hsl(185 100% 45%) 0%,
+        hsl(210 100% 50%) 45%,
+        hsl(285 100% 55%) 100%);
 
-    --gradient-subtle: linear-gradient(
-      180deg,
-      hsl(0 0% 100%) 0%,
-      hsl(260 30% 98%) 100%
-    );
+    --gradient-subtle: linear-gradient(180deg,
+        hsl(210 40% 98%) 0%,
+        hsl(210 30% 95%) 100%);
 
     /* ===========================================================
-       🌟 Shadows — Coral glow with violet depth
+       ⚡ Shadows — Electric glow effects
        =========================================================== */
-    --shadow-elegant: 0 10px 40px -10px hsl(285 70% 55% / 0.25);
-    --shadow-glow: 0 0 60px hsl(12 82% 62% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(250 15% 20% / 0.1);
+    --shadow-elegant: 0 10px 40px -10px hsl(185 100% 45% / 0.25);
+    --shadow-glow: 0 0 60px hsl(185 100% 45% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(240 25% 20% / 0.1);
 
     /* ===========================================================
        ⚡ Animations
@@ -85,90 +79,84 @@
     /* ===========================================================
        🧭 Sidebar / Panels
        =========================================================== */
-    --sidebar-background: 280 40% 98%;
-    --sidebar-foreground: 250 20% 25%;
-    --sidebar-primary: 12 82% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 280 40% 93%;
-    --sidebar-accent-foreground: 250 20% 25%;
-    --sidebar-border: 260 20% 90%;
-    --sidebar-ring: 12 82% 58%;
+    --sidebar-background: 210 40% 96%;
+    --sidebar-foreground: 240 25% 10%;
+    --sidebar-primary: 185 100% 45%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 92%;
+    --sidebar-accent-foreground: 240 25% 15%;
+    --sidebar-border: 210 40% 90%;
+    --sidebar-ring: 185 100% 45%;
   }
 
   .dark {
     /* ===========================================================
-       🌙 Dark Mode — Deep Violet + Coral Glow
+       🌙 Dark Mode — Neural Interface Depth
        =========================================================== */
-    --background: 260 25% 10%;
-    --foreground: 0 0% 95%;
+    --background: 240 25% 10%;
+    --foreground: 210 40% 98%;
 
-    --card: 260 25% 14%;
-    --card-foreground: 0 0% 95%;
+    --card: 240 25% 12%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 260 25% 14%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 240 25% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 12 82% 65%;
-    --primary-foreground: 260 25% 10%;
-    --primary-glow: 285 70% 60%;
+    --primary: 185 100% 50%;
+    --primary-foreground: 240 25% 10%;
+    --primary-glow: 285 100% 65%;
 
-    --secondary: 260 25% 18%;
-    --secondary-foreground: 0 0% 90%;
+    --secondary: 240 25% 15%;
+    --secondary-foreground: 210 40% 90%;
 
-    --muted: 260 25% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 240 25% 18%;
+    --muted-foreground: 210 30% 70%;
 
-    --accent: 285 70% 65%;
-    --accent-foreground: 12 82% 55%;
+    --accent: 285 100% 65%;
+    --accent-foreground: 185 100% 45%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 260 25% 25%;
-    --input: 260 25% 25%;
-    --ring: 12 82% 65%;
+    --border: 240 25% 20%;
+    --input: 240 25% 20%;
+    --ring: 185 100% 50%;
 
     /* ===========================================================
-       🌌 Gradients — Coral → Deep Purple → Peach Glow
+       🌌 Gradients — Neural network data streams
        =========================================================== */
-    --gradient-primary: linear-gradient(
-      135deg,
-      hsl(12 82% 60%) 0%,
-      hsl(285 65% 55%) 50%,
-      hsl(35 90% 60%) 100%
-    );
+    --gradient-primary: linear-gradient(135deg,
+        hsl(185 100% 50%) 0%,
+        hsl(210 100% 55%) 50%,
+        hsl(285 100% 65%) 100%);
 
-    --gradient-hero: linear-gradient(
-      135deg,
-      hsl(12 80% 62%) 0%,
-      hsl(285 65% 55%) 45%,
-      hsl(30 85% 58%) 100%
-    );
+    --gradient-hero: linear-gradient(135deg,
+        hsl(185 100% 50%) 0%,
+        hsl(210 100% 55%) 45%,
+        hsl(285 100% 65%) 100%);
 
-    --gradient-subtle: linear-gradient(
-      180deg,
-      hsl(260 25% 10%) 0%,
-      hsl(260 20% 8%) 100%
-    );
+    --gradient-subtle: linear-gradient(180deg,
+        hsl(240 25% 10%) 0%,
+        hsl(240 30% 8%) 100%);
 
     /* ===========================================================
-       💫 Shadows — depth & glow
+       💫 Shadows — Holographic glow
        =========================================================== */
-    --shadow-elegant: 0 10px 40px -10px hsl(285 70% 60% / 0.4);
-    --shadow-glow: 0 0 60px hsl(12 82% 65% / 0.35);
+    --shadow-elegant: 0 10px 40px -10px hsl(185 100% 50% / 0.4);
+    --shadow-glow: 0 0 60px hsl(185 100% 50% / 0.35);
     --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.35);
 
     /* ===========================================================
        🧭 Sidebar
        =========================================================== */
-    --sidebar-background: 260 25% 14%;
-    --sidebar-foreground: 0 0% 95%;
-    --sidebar-primary: 12 82% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 260 25% 20%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 260 25% 25%;
-    --sidebar-ring: 12 82% 65%;
+    --sidebar-background: 240 25% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 185 100% 50%;
+    --sidebar-primary-foreground: 240 25% 10%;
+    --sidebar-accent: 240 25% 18%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 240 25% 20%;
+    --sidebar-ring: 185 100% 50%;
   }
 }
 
@@ -242,11 +230,9 @@
   /* Gradient Text Titles */
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(
-      90deg,
-      hsl(12 82% 62%) 0%,
-      hsl(285 70% 60%) 50%,
-      hsl(35 95% 68%) 100%
-    );
+    background-image: linear-gradient(90deg,
+        hsl(185 100% 50%) 0%,
+        hsl(210 100% 55%) 50%,
+        hsl(285 100% 65%) 100%);
   }
 }
