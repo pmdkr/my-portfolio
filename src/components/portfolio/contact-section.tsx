@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Github, Linkedin, Mail, Send, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -32,7 +33,7 @@ export const ContactSection = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.3 });
   const { toast } = useToast();
-  
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -44,9 +45,27 @@ export const ContactSection = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
+    // // Simulate form submission
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+    // Your EmailJS service ID, template ID, and Public key
+    const serviceId = 'service_0nqxexr';
+    const templateId = 'template_mnmdr9h';
+    const publicKey = 'LUp4QWaix4pAgM9sH';
+    //Create a new object that contains dynamic template params
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      to_name: 'Web Wizard',
+      message: formData.message,
+    };
+
+    //Send the email using EmailJS
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((response) => {
+        // console.log("Email send successfully !", response);
+        setFormData({ name: '', email: '', message: '' });
+      })
+
     toast({
       title: "Message sent successfully! 🎉",
       description: "Thank you for reaching out. I'll get back to you soon!",
@@ -123,14 +142,14 @@ export const ContactSection = () => {
                 Get in touch
               </h3>
               <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                I'm always open to discussing new opportunities, interesting projects, 
+                I'm always open to discussing new opportunities, interesting projects,
                 or just having a chat about technology and development.
               </p>
             </div>
 
             <div className="space-y-6">
               <motion.a
-                href="mailto:john@example.com"
+                href="mailto:pramodkrlohra@gmail.com"
                 data-interactive
                 whileHover={{ x: 5 }}
                 className="flex items-center space-x-4 p-4 rounded-lg bg-card border border-border/50 hover:border-primary/20 transition-smooth group"

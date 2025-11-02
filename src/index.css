@@ -2,122 +2,161 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
-All colors MUST be HSL.
-*/
+/* ===========================================================
+   🧠 NEURAL INTERFACE — Futuristic Developer Theme (2025)
+   Deep neural blue + electric cyan with data-stream accents
+   Perfect for software developer portfolios
+   =========================================================== */
 
 @layer base {
   :root {
-    /* Base colors */
-    --background: 0 0% 100%;
-    --foreground: 15 15% 15%;
+    /* ===========================================================
+       ☀️ Light Mode — Clean tech aesthetic
+       =========================================================== */
+    --background: 210 40% 98%;
+    --foreground: 240 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 15 15% 15%;
+    --card-foreground: 240 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 15 15% 15%;
+    --popover-foreground: 240 25% 10%;
 
-    /* Retro sunset warm primary */
-    --primary: 15 100% 65%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 330 100% 70%;
+    /* Electric cyan as primary */
+    --primary: 185 100% 45%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 285 100% 55%;
 
-    /* Soft peachy secondary */
-    --secondary: 45 100% 95%;
-    --secondary-foreground: 15 25% 25%;
+    /* Clean tech supporting tones */
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 240 25% 15%;
 
-    --muted: 45 30% 96%;
-    --muted-foreground: 15 20% 45%;
+    --muted: 210 40% 94%;
+    --muted-foreground: 240 20% 40%;
 
-    --accent: 330 100% 95%;
-    --accent-foreground: 330 100% 50%;
+    --accent: 285 100% 55%;
+    --accent-foreground: 185 100% 40%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 20 20% 90%;
-    --input: 20 20% 90%;
-    --ring: 15 100% 65%;
+    --border: 210 40% 90%;
+    --input: 210 40% 90%;
+    --ring: 185 100% 45%;
 
     --radius: 0.75rem;
 
-    /* Custom design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(15 100% 65%), hsl(330 100% 70%));
-    --gradient-hero: linear-gradient(135deg, hsl(15 100% 65%) 0%, hsl(45 100% 65%) 50%, hsl(330 100% 70%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(45 30% 96%) 100%);
+    /* ===========================================================
+       🌈 Gradients — Electric cyan → Neural purple
+       =========================================================== */
+    --gradient-primary: linear-gradient(135deg,
+        hsl(185 100% 45%) 0%,
+        hsl(210 100% 50%) 50%,
+        hsl(285 100% 55%) 100%);
 
-    /* Shadows */
-    --shadow-elegant: 0 10px 40px -10px hsl(15 100% 65% / 0.2);
-    --shadow-glow: 0 0 60px hsl(330 100% 70% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(15 15% 15% / 0.1);
+    --gradient-hero: linear-gradient(135deg,
+        hsl(185 100% 45%) 0%,
+        hsl(210 100% 50%) 45%,
+        hsl(285 100% 55%) 100%);
 
-    /* Animations */
+    --gradient-subtle: linear-gradient(180deg,
+        hsl(210 40% 98%) 0%,
+        hsl(210 30% 95%) 100%);
+
+    /* ===========================================================
+       ⚡ Shadows — Electric glow effects
+       =========================================================== */
+    --shadow-elegant: 0 10px 40px -10px hsl(185 100% 45% / 0.25);
+    --shadow-glow: 0 0 60px hsl(185 100% 45% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(240 25% 20% / 0.1);
+
+    /* ===========================================================
+       ⚡ Animations
+       =========================================================== */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Sidebar */
-    --sidebar-background: 45 100% 97%;
-    --sidebar-foreground: 15 25% 25%;
-    --sidebar-primary: 15 100% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 45 100% 90%;
-    --sidebar-accent-foreground: 15 25% 25%;
-    --sidebar-border: 20 20% 90%;
-    --sidebar-ring: 330 100% 70%;
+    /* ===========================================================
+       🧭 Sidebar / Panels
+       =========================================================== */
+    --sidebar-background: 210 40% 96%;
+    --sidebar-foreground: 240 25% 10%;
+    --sidebar-primary: 185 100% 45%;
+    --sidebar-primary-foreground: 210 40% 98%;
+    --sidebar-accent: 210 40% 92%;
+    --sidebar-accent-foreground: 240 25% 15%;
+    --sidebar-border: 210 40% 90%;
+    --sidebar-ring: 185 100% 45%;
   }
 
   .dark {
-    /* Dark base colors */
-    --background: 330 30% 8%;
-    --foreground: 45 40% 98%;
+    /* ===========================================================
+       🌙 Dark Mode — Neural Interface Depth
+       =========================================================== */
+    --background: 240 25% 10%;
+    --foreground: 210 40% 98%;
 
-    --card: 330 30% 10%;
-    --card-foreground: 45 40% 98%;
+    --card: 240 25% 12%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 330 30% 10%;
-    --popover-foreground: 45 40% 98%;
+    --popover: 240 25% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Bright primary for dark mode */
-    --primary: 330 100% 70%;
-    --primary-foreground: 330 30% 10%;
-    --primary-glow: 15 100% 65%;
+    --primary: 185 100% 50%;
+    --primary-foreground: 240 25% 10%;
+    --primary-glow: 285 100% 65%;
 
-    --secondary: 330 30% 14%;
-    --secondary-foreground: 45 40% 98%;
+    --secondary: 240 25% 15%;
+    --secondary-foreground: 210 40% 90%;
 
-    --muted: 330 30% 14%;
-    --muted-foreground: 15 25% 70%;
+    --muted: 240 25% 18%;
+    --muted-foreground: 210 30% 70%;
 
-    --accent: 15 100% 20%;
-    --accent-foreground: 15 100% 65%;
+    --accent: 285 100% 65%;
+    --accent-foreground: 185 100% 45%;
 
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 330 30% 20%;
-    --input: 330 30% 20%;
-    --ring: 330 100% 70%;
+    --border: 240 25% 20%;
+    --input: 240 25% 20%;
+    --ring: 185 100% 50%;
 
-    /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(15 100% 65%), hsl(330 100% 70%));
-    --gradient-hero: linear-gradient(135deg, hsl(15 100% 65%) 0%, hsl(45 100% 65%) 50%, hsl(330 100% 70%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(330 30% 8%) 0%, hsl(330 30% 10%) 100%);
+    /* ===========================================================
+       🌌 Gradients — Neural network data streams
+       =========================================================== */
+    --gradient-primary: linear-gradient(135deg,
+        hsl(185 100% 50%) 0%,
+        hsl(210 100% 55%) 50%,
+        hsl(285 100% 65%) 100%);
 
-    /* Dark shadows */
-    --shadow-elegant: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
-    --shadow-glow: 0 0 60px hsl(330 100% 70% / 0.3);
-    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+    --gradient-hero: linear-gradient(135deg,
+        hsl(185 100% 50%) 0%,
+        hsl(210 100% 55%) 45%,
+        hsl(285 100% 65%) 100%);
 
-    /* Sidebar */
-    --sidebar-background: 330 30% 10%;
-    --sidebar-foreground: 45 40% 98%;
-    --sidebar-primary: 15 100% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 330 25% 20%;
-    --sidebar-accent-foreground: 45 40% 98%;
-    --sidebar-border: 330 25% 20%;
-    --sidebar-ring: 15 100% 65%;
+    --gradient-subtle: linear-gradient(180deg,
+        hsl(240 25% 10%) 0%,
+        hsl(240 30% 8%) 100%);
+
+    /* ===========================================================
+       💫 Shadows — Holographic glow
+       =========================================================== */
+    --shadow-elegant: 0 10px 40px -10px hsl(185 100% 50% / 0.4);
+    --shadow-glow: 0 0 60px hsl(185 100% 50% / 0.35);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.35);
+
+    /* ===========================================================
+       🧭 Sidebar
+       =========================================================== */
+    --sidebar-background: 240 25% 12%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 185 100% 50%;
+    --sidebar-primary-foreground: 240 25% 10%;
+    --sidebar-accent: 240 25% 18%;
+    --sidebar-accent-foreground: 210 40% 90%;
+    --sidebar-border: 240 25% 20%;
+    --sidebar-ring: 185 100% 50%;
   }
 }
 
@@ -134,11 +173,10 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground font-inter;
     overflow-x: hidden;
-    -ms-content-zooming: none;
     touch-action: pan-x pan-y;
   }
 
-  /* Custom scrollbar */
+  /* Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
   }
@@ -189,7 +227,12 @@ All colors MUST be HSL.
     transition: var(--transition-spring);
   }
 
+  /* Gradient Text Titles */
   .text-gradient {
-    @apply bg-gradient-to-r from-[hsl(15_100%_65%)] via-[hsl(45_100%_65%)] to-[hsl(330_100%_70%)] bg-clip-text text-transparent;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg,
+        hsl(185 100% 50%) 0%,
+        hsl(210 100% 55%) 50%,
+        hsl(285 100% 65%) 100%);
   }
 }
