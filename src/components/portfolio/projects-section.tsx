@@ -12,16 +12,16 @@ const projects = [
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
     technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/johndoe/ecommerce"
+    githubUrl: "https://github.com/pmdkr/my-DevTinder"
   },
   {
     id: 2,
     title: "Netflix-GPT",
     description: "Collaborative project management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
+    image: "https://assets.nflxext.com/ffe/siteui/vlv3/9c363af5-4750-4f14-87d1-8125f5276db0/web/IN-en-20251027-TRIFECTA-perspective_b68b1528-3a10-4997-9f99-48ccbdb86626_medium.jpg",
     technologies: ["Next.js", "TypeScript", "Prisma", "Socket.io", "PostgreSQL"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/johndoe/taskmanager"
+    githubUrl: "https://github.com/pmdkr/my-NetflixGPT"
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const projects = [
     image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=400&h=300&fit=crop",
     technologies: ["Vue.js", "Chart.js", "OpenWeather API", "Vuex", "SCSS"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/johndoe/weather"
+    githubUrl: "https://github.com/pmdkr/VideoHub"
   },
   {
     id: 4,
