@@ -9,8 +9,8 @@ const projects = [
     id: 1,
     title: "DevTinder – Developer Matchmaking App",
     description: "A MERN stack Tinder clone for developers with features like friend requests, real-time chat, notifications, and payment integration.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
+    image: "/tinderImg.png",
+    technologies: ["React", "Node.js", "MongoDB", "AWS EC2", "Tailwind CSS"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/pmdkr/my-DevTinder"
   },
@@ -19,7 +19,7 @@ const projects = [
     title: "Netflix-GPT",
     description: "Collaborative project management tool with real-time updates, drag-and-drop functionality, and team collaboration features.",
     image: "https://assets.nflxext.com/ffe/siteui/vlv3/9c363af5-4750-4f14-87d1-8125f5276db0/web/IN-en-20251027-TRIFECTA-perspective_b68b1528-3a10-4997-9f99-48ccbdb86626_medium.jpg",
-    technologies: ["Next.js", "TypeScript", "Prisma", "Socket.io", "PostgreSQL"],
+    technologies: ["Next.js", "TypeScript", "TMDB API", "PostgreSQL"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/pmdkr/my-NetflixGPT"
   },
@@ -34,12 +34,12 @@ const projects = [
   },
   {
     id: 4,
-    title: "Social Media Analytics",
+    title: "Json Tree Visualizer",
     description: "A comprehensive analytics platform for social media management with data visualization, automated reporting, and performance insights.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
-    technologies: ["React", "D3.js", "Python", "Flask", "PostgreSQL"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/johndoe/analytics"
+    image: "/jsonviewer.png",
+    technologies: ["React 19", "React flow library", "TailwindCSS", "PostgreSQL"],
+    liveUrl: "https://pramod-lohra-json-tree-visualizer.netlify.app/",
+    githubUrl: "https://github.com/pmdkr/json-tree-visualizer?tab=readme-ov-file"
   },
   {
     id: 5,
